@@ -20,13 +20,13 @@ Vue.use(VeeValidate,{
 	fieldsBagName: 'veefields'
 });
 
-//import api from '@/request/api.js' // 导入api接口
+import api from '@/request/api.js' // 导入api接口
 Vue.prototype.$api = api;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  store,
+  //store,
   components: { App },
   template: '<App/>'
 })
