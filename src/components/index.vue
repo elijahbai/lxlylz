@@ -13,7 +13,8 @@
 				<el-table-column prop="tem" label="温度"></el-table-column>
 				<el-table-column prop="win" label="风向"></el-table-column>
 				<el-table-column prop="win_speed" label="风级"></el-table-column>
-				<el-table-column prop="air_tips" label="tips" class="tips" style="color: blue;"></el-table-column>
+        <el-table-column prop="air_level" label="空气质量"></el-table-column>
+				<el-table-column prop="air_tips" label="air_tips" ></el-table-column>
 			</el-table>
 			</div>
 		</div>

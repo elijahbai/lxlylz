@@ -3,10 +3,8 @@
 	<el-container class="container">
 		<el-aside width="240px"  class='homeContent'>
 			<div>
+        <img class="ima" src="../assets/ly.png" alt="" width="100px" height="100px">
 				<ul class="ltBox">
-					<li>
-						<img src="../assets/ly.png" alt="" width="75px" height="75px">
-					</li>
 					<li class="userName">
 						lxlylz
 					</li>
@@ -29,12 +27,13 @@
 				<el-menu
 					unique-opened
 					:default-active="$store.state.curIndex"
-					class="el-menu-vertical-demo"
+					class="content"
 					@open="handleOpen"
 					@close="handleClose"
-					background-color="#f8f8f8"
-					text-color="#283148"
-					active-text-color="#f29b4f">
+					background-color="#20293c"
+					text-color="#ffffff"
+					active-text-color="#a2c41f"
+          >
 					<router-link :to="v.url" v-if="v.url" v-for="(v,k,index) in authConfig" :key="index">
 						<el-menu-item  :index="index.toString()" @click="onSaveIndex(index)">
 							<!-- <i style="display: none;">{{index.toString()}}</i> -->
@@ -138,7 +137,7 @@
 				let lastTime = new Date().getTime();
 				let timeOut = 1000 * 60 * 10 ;  //10分钟超时
 				document.onmousemove = function(e){
-					lastTime = new Date().getTime(); 
+					lastTime = new Date().getTime();
 				}
 				this.Time = setInterval(()=>{
 					let currentTime = new Date().getTime(); //更新当前时间
@@ -158,7 +157,7 @@
 			},
 			onGetNowData(){
 				this.Time = setInterval(()=>{
-					this.dataTime = new Date().getFullYear() + '-' + this.onRuleTime((new Date().getMonth()+1)) + '-' + this.onRuleTime(new Date().getDate()) + ' ' + 
+					this.dataTime = new Date().getFullYear() + '-' + this.onRuleTime((new Date().getMonth()+1)) + '-' + this.onRuleTime(new Date().getDate()) + ' ' +
 													this.onRuleTime(new Date().getHours())  + ':' + this.onRuleTime(new Date().getMinutes())  + ':' + this.onRuleTime(new Date().getSeconds()) ;
 				},1000)
 			},
@@ -232,12 +231,13 @@
 .el-aside {
 	background: #f8f8f8;
 	border-right: 1px solid #e8e8e8;
+  height: 948px;
 }
 .container{
 	width: 100%;
 	height: 100%;
-	background-color: #f8f8f8;
-	
+	background-color: #FFFFFF;
+
 	.ltBox{
 		margin-top: 51px;
 		li{
@@ -252,7 +252,7 @@
 			font-size: 12px;
 			color: #9397a0;
 		}
-	} 
+	}
 	.titBox{
 		border-top: 1px solid #e8e8e8;
 		border-bottom: 1px solid #e8e8e8;
@@ -270,14 +270,37 @@
 	}
 	.homeLeft{
 		margin-top: 50px;
+    text-align: center;
 	}
 }
-  
+
 .el-main {
-	color: #333;
+	color: #0074D9;
 	width: 100%;
 	padding: 0;
 	position: relative;
 	background-color: #f8f8f8;
+}
+.ima{
+  margin-top: 20px;
+  margin-left: 60px;
+}
+.el-menu-item{
+	padding: 0!important;
+	background-color: transparent!important;
+	height: 50px;/*no*/
+	line-height: 50px;/*no*/
+	margin-bottom: 20px;/*no*/
+	justify-content: center;
+	border-radius: 4px;
+	font-size: 18px;
+	cursor: pointer;
+	i{
+		width: 20px;/*no*/
+		height: 20px;/*no*/
+		margin-right: 10px;
+		color: #FFFFFF;
+		font-size: 20px;/*no*/
+	}
 }
 </style>
