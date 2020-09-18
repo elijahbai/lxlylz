@@ -6,23 +6,23 @@ export let authconfig = {
 		url:'/main/index',
 	},
 	productionManagement:{
-		ctrName:'数据查询',
+		ctrName:'栏目1',
 		iconFont:'iconfont icon-tubiaoshangshengqushi',
-		url:'/main/dashboard',
+		url:'/main/content1',
 	},
 	qualityManagement:{
-		ctrName:'报表分析',
+		ctrName:'栏目2',
 		iconFont:'iconfont icon-baobiao',
-		url:'/main/report',
+		url:'/main/content2',
 	},
 	notificationManagement:{
-		ctrName:'实时报警',
+		ctrName:'栏目3',
 		iconFont:'iconfont icon-jinggao',
-		url:'/main/warning',
+		url:'/main/content3',
 	},
 	userManagement:{
-		ctrName:'用户管理',
+		ctrName:'栏目4',
 		iconFont:'iconfont icon-yonghu1',
-		url:'/main/user',
+		url:'/main/content4',
 	},
 }

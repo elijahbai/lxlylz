@@ -6,7 +6,7 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import 'element-ui/lib/theme-chalk/index.css';
 import VeeValidate from 'vee-validate';
-//import store from './store/store';
+import store from './store/store';
 import VueCookie from 'vue-cookie';
 //import './assets/icon/iconfont.css';
 import Print from 'vue-print-nb';
@@ -26,7 +26,7 @@ Vue.prototype.$api = api;
 new Vue({
   el: '#app',
   router,
-  //store,
+  store,
   components: { App },
   template: '<App/>'
 })

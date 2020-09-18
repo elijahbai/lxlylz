@@ -5,23 +5,23 @@
 			<div>
 				<ul class="ltBox">
 					<li>
-						<img src="" alt="" width="75px" height="75px">
+						<img src="../assets/ly.png" alt="" width="75px" height="75px">
 					</li>
 					<li class="userName">
-						Jenny Buffet
+						lxlylz
 					</li>
 					<li class="posi">
-						New York.NY
+						Shanghai
 					</li>
 				</ul>
 				<ul style="margin-top: 41px;" class="flex titBox">
 					<li style="border-right:  1px solid #e8e8e8;" class="flex flex-column flex_center">
-						<p>总站点</p>
-						<p class="value">2</p>
+						<p>当前时间</p>
+						<p class="value">2020.9.18</p>
 					</li>
 					<li class="flex flex-column flex_center">
-						<p>在线</p>
-						<p class="value">1</p>
+						<p>天气</p>
+						<p class="value">晴朗多云</p>
 					</li>
 				</ul>
 			</div>
