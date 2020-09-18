@@ -1,6 +1,6 @@
 <template>
 	<div class="hello">
-		<ul class="-webkit-flex flex_warp flex_center">
+		<ul class="flex flex_warp flex_center">
 			<li class="infoBox">
 			</li>
 			<li class="infoBox">

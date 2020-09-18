@@ -1,0 +1,201 @@
+/*公共样式*/
+*{
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	-moz-text-decoration-color: none;
+}
+#app{
+	height: 100%;
+}
+body{
+	width: 1920px;
+	height: 1080px;
+}
+a:hover{
+	text-decoration: none!important;
+}
+.button{
+	display: inline-block;
+	line-height: 1;
+	white-space: nowrap;
+	cursor: pointer;
+	background: #FFF;
+	border: 0.013333rem solid #DCDFE6;
+	color: #606266;
+	-webkit-appearance: none;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: 0;
+	margin: 0;
+	-webkit-transition: .1s;
+	transition: .1s;
+	font-weight: 500;
+	padding: 0.16rem 0.266667rem;
+	font-size: 0.186667rem;
+	border-radius: 0.053333rem;
+}
+.pointer{
+	cursor: pointer;
+}
+.main{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: inline-block;
+}
+/*登录页面样式*/
+.loginBox{
+	width:100%;
+	height:100%;
+	background:#2b3f54;
+	position: relative;
+	top:0;
+	left:0;
+}
+.loginBox .systemName{
+	font-size: 24px;
+	color:#FFFFFF;
+}
+.loginBox .loginInnerBox{
+	width:400px;
+	height:300px;
+	text-align: center;
+	position: fixed;
+	left:calc( 50% - 200px);
+	top:200px;
+	z-index: 1;
+}
+.loginInnerBox p{
+	font-weight:500;
+	margin-top:30px;
+	color:white;
+}
+.btnSubmit{
+	width: 324px;
+	height: 48px;
+	color: white;
+	font-weight: 600;
+	border: transparent;
+	border-radius: 15px;
+	margin-top: 30px;
+	background-color:#3f9dff !important;
+	cursor: pointer;
+	outline: none;
+}
+.copyRight{
+	margin-top:100px;
+}
+.copyRight span{
+	color:lightgrey;
+}
+
+.remind_A{
+	position: absolute;
+	top: 135px;
+	left: 288px;
+}
+.remind_B{
+	position: absolute;
+	top: 195px;
+	left: 288px;
+}
+.times{
+	font-style: normal;
+	font-size:28px;
+	cursor: pointer;
+	position: absolute;
+	top:0px;
+	right:10px;
+}
+.ipt{
+	width: 324px;
+	height: 48px;
+	background-color: #475e77;
+	color:#FFFFFF;
+	text-indent: 10px;
+	font-size: 16px;
+	border-radius: 14px;
+	border: 0;
+	outline: none;
+}
+.comp-full-calendar{
+	max-width: none!important;
+}
+.footer{
+	background: url(../img/bottombg.png);
+}
+.block{
+	width:100%;
+	height:30px;
+	position: absolute;
+	bottom:0px;
+	left:0;
+	text-align: right;
+}
+/*提示样式*/
+.remind{
+	width: 120px;
+	height:34px ;
+	padding: 0 10px;
+	background-color: orange;
+	margin-top: 10px;
+	line-height:34px;
+	color: white;
+	font-size: 12px;
+	border-radius: 4px;
+	text-align: center;
+}
+.remind_all{
+	position: absolute;
+	top: 0;
+}
+.remind_a{
+	left: 320px;
+}
+.remind_b{
+	left: 420px;
+}
+.remind_c{
+	left: 575px;
+}
+.remind_d{
+	left: 1000px;
+	width: 90px;
+	top: 45px;
+}
+.itag{
+	width:0;
+	height:0;
+	margin:40px auto;
+	position: absolute;
+	top: -30px;
+	left: -10px;
+	border-top: 5px solid transparent;
+	border-right: 10px solid orange;
+	border-bottom: 5px solid transparent;
+}
+.iTag {
+	width: 0;
+	height: 0;
+	border-width: 0 5px 5px;
+	border-style: solid;
+	border-color: transparent transparent orange;
+	margin: 40px auto;
+	position: absolute;
+	top: -44px;
+	left: 20px;
+}
+*::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: #fff;
+}
+*::-webkit-scrollbar-thumb {
+	border-radius:5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: rgba(0, 0, 0, .1)
+}
