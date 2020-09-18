@@ -19,6 +19,7 @@ Vue.use(VeeValidate,{
 	xxxx:'xxxx',
 	fieldsBagName: 'veefields'
 });
+Vue.prototype.$axios = axios
 
 import api from '@/request/api.js' // 导入api接口
 Vue.prototype.$api = api;

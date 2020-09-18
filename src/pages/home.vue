@@ -17,10 +17,10 @@
 				<ul style="margin-top: 41px;" class="flex titBox">
 					<li style="border-right:  1px solid #e8e8e8;" class="flex flex-column flex_center">
 						<p>当前时间</p>
-						<p class="value">2020.9.18</p>
+						<p class="value">{{this.dataTime}}</p>
 					</li>
 					<li class="flex flex-column flex_center">
-						<p>天气</p>
+						<p>上海天气</p>
 						<p class="value">晴朗多云</p>
 					</li>
 				</ul>
@@ -91,7 +91,7 @@
 	import {authconfig} from "../config/authConfig";
 	import {ipConfig} from '@/config/ipConfig'
 	export default {
-		name: 'api',
+		name: 'home',
 		data () {
 			return {
 				checkValue:'',
@@ -106,6 +106,7 @@
 				value:true,
 				url:ipConfig.urlXHL,
 				defaultActive:'0',
+				data: [],
 			}
 		},
 		created(){
@@ -117,12 +118,21 @@
 			//this.onIndexAuth();
 			this.onNoBack();
 			this.onSetIndex();
+			//this.getWeather();
 		},
+
 		methods:{
 			onCheckIsLogin(){
 				if(!this.$store.state.admin){
 					this.$router.push('/');
 				}
+			},
+						getWeather () {
+				this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid=310100' ).then(function(reponse){
+					this.tableData = reponse.data;
+					console.log(this.tableData);
+					console.log("test");
+					}).catch(() => {})
 			},
 			onWatchActive(){
 				let lastTime = new Date().getTime();
@@ -213,7 +223,8 @@
 					val = val + '';
 				}
 				this.$store.commit("getCurIndex",val);
-			}
+			},
+
 		},
 	}
 </script>
