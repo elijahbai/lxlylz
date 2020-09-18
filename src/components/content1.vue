@@ -1,28 +1,37 @@
 <template>
-  <div class="main">
-    <div class="header">
-      <el-button class="button" v-print="'#printStart'">打印页面</el-button>
-    </div>
-    <div id="printStart">
-    <div class="mainbix"></div>
-    </div>
-  </div>
+	<div class="hello">
+		<ul class="-webkit-flex flex_warp flex_center">
+			<li class="infoBox">
+			</li>
+			<li class="infoBox">
+			</li>
+			<li class="infoBox">
+			</li>
+			<li class="infoBox">
+			</li>
+		</ul>
+	</div>
 </template>
+<script type="text/javascript">
 
-<script>
+export default {
+	name:'content1',
+	data() {
+		return {
+		}	
+	},
+	mounted(){
+	},
+	methods:{
+	}
+}
 </script>
-
-<style scoped lang="less">
-  .main{
-    height: 97%;
-    background-color: lightskyblue;
-    margin: 10px 10px 10px 10px;
-    .button{
-      margin-top: 18px;
-      margin-left: 1516px;
-    }
-    .mainbox{
-      margin-top: 10px;    
-    }
-  }
+<style scoped lang="less" >
+.infoBox{
+	width: 646px;
+	height: 400px;
+	background-color: #44464d;
+	margin: 0 20px;
+	margin-bottom: 20px;
+}
 </style>

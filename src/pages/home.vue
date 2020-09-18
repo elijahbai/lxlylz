@@ -35,7 +35,7 @@
 					active-text-color="#a2c41f"
           >
 					<router-link :to="v.url" v-if="v.url" v-for="(v,k,index) in authConfig" :key="index">
-						<el-menu-item  :index="index.toString()" @click="onSaveIndex(index)">
+						<el-menu-item  :index="index.toString()" @click="onSaveIndex(index)" class="menuBox">
 							<!-- <i style="display: none;">{{index.toString()}}</i> -->
 							<i :class="authConfig[k]['iconFont']"></i>
 							<span slot="title">{{authConfig[k]["ctrName"]}}</span>
@@ -268,12 +268,8 @@
 			margin-top: 10px;
 		}
 	}
-	.homeLeft{
-		margin-top: 50px;
-    text-align: center;
-	}
-}
 
+}
 .el-main {
 	color: #0074D9;
 	width: 100%;
@@ -285,22 +281,19 @@
   margin-top: 20px;
   margin-left: 60px;
 }
-.el-menu-item{
-	padding: 0!important;
-	background-color: transparent!important;
-	height: 50px;/*no*/
-	line-height: 50px;/*no*/
-	margin-bottom: 20px;/*no*/
-	justify-content: center;
-	border-radius: 4px;
-	font-size: 18px;
+.menuBox{
+	//width: 100px;
+	border-radius: 8px;
+	background-color: #1673b1;
+	color: #FFFFFF;
+	text-align: center;
+	border-bottom: 2px solid #0e5584;
 	cursor: pointer;
+	border-radius: 4px;
+	//margin: 0 auto;
+	//margin-bottom: 10px;
 	i{
-		width: 20px;/*no*/
-		height: 20px;/*no*/
-		margin-right: 10px;
-		color: #FFFFFF;
-		font-size: 20px;/*no*/
+		font-size: 40px;
 	}
 }
 </style>
