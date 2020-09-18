@@ -4,7 +4,7 @@
       <el-button class="button" v-print="'#printStart'">打印页面</el-button>
     </div>
     <div id="printStart">
-
+    <div class="mainbix"></div>
     </div>
   </div>
 </template>
@@ -20,6 +20,9 @@
     .button{
       margin-top: 18px;
       margin-left: 1516px;
+    }
+    .mainbox{
+      margin-top: 10px;    
     }
   }
 </style>
