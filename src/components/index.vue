@@ -50,8 +50,12 @@
 			}
 		},
 		mounted(){
-			this.getWeather();
-      //this.onGetchart();
+        Highchart.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        this.onGetchart();
 		},
 		methods:{
 			getWeather() {
@@ -79,16 +83,18 @@
           this.tem1[5] = parseInt(this.tableData[5].tem1);
           this.tem1[6] = parseInt(this.tableData[6].tem1);
 					console.log(this.tem1);
+          console.log(this.date);
 				},function(reponse){
 					console.log("test");
 					}).catch(() => {})
-          this.onGetchart();
 			},
       onGetchart(){
+        this.getWeather();
         this.chart = Highchart.chart('chart', {
           xAxis: {
-            //categories: this.day,
-            categories: [this.day[0], this.day[1], this.day[2],this.day[3], this.day[4], this.day[5],this.day[6]],
+            categories: this.date,
+            //categories: [ "2020-09-18", "2020-09-19", "2020-09-20", "2020-09-21", "2020-09-22", "2020-09-23", "2020-09-24" ],
+            //categories: [this.day[0], this.day[1], this.day[2],this.day[3], this.day[4], this.day[5],this.day[6]],
           },
           yAxis: {
             title: {
@@ -106,8 +112,9 @@
           credits:{enabled:false,},
           series: [{
             showInLegend: false,
-            //data: this.tem1,
-            data: [20, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, ]
+            //data: [ 23, 23, 28, 26, 21, 23, 25 ],
+            data: this.tem1,
+            //data: [20, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, ]
             //data: [parseInt(this.tem1[0]),parseInt(this.tem1[1]),parseInt(this.tem1[2]),parseInt(this.tem1[3]),parseInt(this.tem1[4]),parseInt(this.tem1[5]),parseInt(this.tem1[6])]
           }]
         });
