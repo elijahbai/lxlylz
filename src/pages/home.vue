@@ -117,7 +117,6 @@
 			//this.onIndexAuth();
 			this.onNoBack();
 			this.onSetIndex();
-			//this.getWeather();
 		},
 
 		methods:{
@@ -125,13 +124,6 @@
 				if(!this.$store.state.admin){
 					this.$router.push('/');
 				}
-			},
-						getWeather () {
-				this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid=310100' ).then(function(reponse){
-					this.tableData = reponse.data;
-					console.log(this.tableData);
-					console.log("test");
-					}).catch(() => {})
 			},
 			onWatchActive(){
 				let lastTime = new Date().getTime();

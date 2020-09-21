@@ -1,11 +1,11 @@
 <template>
-	<div class="main">
-		<div class="leftbox">
-			<div>
+	<div class="flex-between main">
+		<div class="flex leftbox">
+			<div class="daytable">
 				<el-table
 				:data="tableData"
 				border
-				style="width: 98.5%"
+				style="width: 96.5%"
         class="weather">
 				<el-table-column prop="date" label="data"></el-table-column>
 				<el-table-column prop="week" label="data"></el-table-column>
@@ -15,14 +15,28 @@
 				<el-table-column prop="win_speed" label="风级"></el-table-column>
         <el-table-column prop="air_level" label="空气质量"></el-table-column>
 				<el-table-column prop="air_tips" label="air_tips" ></el-table-column>
-			</el-table>
+			 </el-table>
 			</div>
+      <div class="chart" id="hourschart"></div>
 		</div>
-		<div class="rightbox">
-<!--       <span>{{date}}</span></br>
-      <span>{{tem1}}</span> -->
+		<div class="flex rightbox">
+      <div class="hourtable">
+          <el-table
+          :data="hoursData"
+          border
+          style="width: 96.5%"
+          class="weather">
+            <el-table-column prop="day" label="具体时间"></el-table-column>
+            <el-table-column prop="wea" label="天气状况"></el-table-column>
+            <el-table-column prop="tem" label="温度"></el-table-column>
+            <el-table-column prop="win" label="风向"></el-table-column>
+            <el-table-column prop="win_speed" label="风级"></el-table-column>
+          </el-table>
+        </div>
+        <div class="chart" id="chart"></div>
     </div>
-    <div class="chart" id="chart"></div>
+    
+
 	</div>
 </template>
 
@@ -37,6 +51,7 @@
 		data(){
 			return{
 				tableData: [],
+        hoursData: [],
 				date: [],
 				week:'',
 				wea:'',
@@ -44,8 +59,11 @@
 				win_speed:'',
 				air_tips:'',
         chart: null,
+        hourschart: null,
         tem1: [],
         day: [],
+        hours: [],
+        tem2: [],
 			}
 		},
 		mounted(){
@@ -61,29 +79,35 @@
 			getWeather() {
 				this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid=310100' ).then((reponse) =>{
 					this.tableData = reponse.data.data;
+          this.hoursData = reponse.data.data[0].hours;
           for(var i=0;i<7;i++){
             this.date[i] = this.tableData[i].date
-            this.tem1[i] = parseInt(this.tableData[i].tem1)
+            this.tem1[i] = parseInt(this.tableData[i].tem)
           }
-          console.log(this.tem1);
-          console.log(this.date);
-          //console.log(this.date[2])
+          for (var i=0;i<8;i++){
+            this.hours[i] = this.hoursData[i].day;
+            this.tem2[i] = parseInt(this.hoursData[i].tem);
+          }
+          console.log(this.tem2);
+          console.log(this.hours);
+          //console.log(this.hoursData);
           this.onGetchart();
+          this.onGethourschart();
 				},function(reponse){
 					console.log("test");
 					}).catch(() => {})
 			},
       onGetchart(){
-        console.log(this.tem1);
-        console.log(this.date);
-        console.log(this.date[2]);
+        //console.log(this.tem1);
+        //console.log(this.date);
+        //console.log(this.date[2]);
         this.chart = Highchart.chart('chart', {
           xAxis: {
             type: 'datetime',
             title: {
               text :null
             },
-            categories: this.date,
+            categories: this.hours,
           },
           yAxis: {
             title: {
@@ -91,7 +115,44 @@
             }
           },
           title: {
-            text: '温度变化曲线'
+            text: '一天温度变化曲线'
+          },
+          plotOptions: {
+            series: {
+              allowPointSelect: true
+            }
+          },
+          credits:{enabled:false,},
+          tooltip: {
+              //headerFormat: '<b>{xAxis.categories}</b><br>',
+              pointFormat: ' {point.y:.0f} ℃'
+          },
+          series: [{
+            showInLegend: false,
+            data: this.tem2,
+          }]
+        });
+      },
+      onGethourschart(){
+        //console.log(this.tem1);
+        //console.log(this.date);
+        //console.log(this.date[2]);
+        this.chart = Highchart.chart('hourschart', {
+          xAxis: {
+            type: 'hourtime',
+            title: {
+              text :null
+            },
+            categories: this.date,
+          },
+          yAxis: {
+            gridLineWidth: 0,
+            title: {
+              text: 'temperature'
+            }
+          },
+          title: {
+            text: '一周温度变化曲线'
           },
           plotOptions: {
             series: {
@@ -121,17 +182,28 @@
     position: absolute;
     //background-color: lightskyblue;
   }
+  .leftbox{
+    margin-bottom: 20px;
+  }
+  .daytable{
+    height: 300px;
+    width: 960px;
+  }
+  .hourtable{
+    width: 960px;
+  }
   .weather{
     margin-top: 10px;
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 0px;
     //background-color: #0074D9;
     color: steelblue;
   }
   .chart{
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
     margin-left: 10px;
-    width: 1360px;
-    height: 300px;
+    width: 760px;
+    height: 460px;
   }
 </style>
