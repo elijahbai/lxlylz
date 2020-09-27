@@ -3,7 +3,7 @@
 		<div class="addBox" id="addBox">
 			<div class="flex flex_between">
 				<div class="flex">
-					<ul class="flex" style="margin-right: 20px;">
+					<ul class="flex" style="margin-right: 20px;margin-top: 6px;">
 						<li>
 							<i :class="curType == 'type' ?  'apiColor el-icon-s-grid is-active' : 'apiColor el-icon-s-grid' " @click="onChangeIndex('type')"></i>
 						</li>
@@ -15,7 +15,7 @@
 						</li>
 					</ul>
 				</div>
-				<el-button type="primary" size="mini" v-print="'#addBox'" >打印</el-button>
+				<el-button type="primary" size="normal" v-print="'#addBox'" style="margin-top: 6px;" >打印</el-button>
 			</div>
 			<div class="tableBox">
 				<el-table

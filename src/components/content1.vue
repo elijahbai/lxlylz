@@ -1,15 +1,18 @@
 <template>
 	<div class="hello">
-		<ul class="flex flex_warp flex_center">
-			<li class="infoBox">
-			</li>
-			<li class="infoBox">
-			</li>
-			<li class="infoBox">
-			</li>
-			<li class="infoBox">
-			</li>
-		</ul>
+		<div class="mainbox">
+			<ul class="flex flex_warp flex_center">
+				<li class="infoBox">
+					
+				</li>
+				<li class="infoBox">
+				</li>
+				<li class="infoBox">
+				</li>
+				<li class="infoBox">
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -33,5 +36,8 @@ export default {
 	background-color: #44464d;
 	margin: 0 20px;
 	margin-bottom: 20px;
+}
+.mainbox{
+	margin-top: 20px;
 }
 </style>
