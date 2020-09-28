@@ -111,20 +111,25 @@
     methods:{
       onCheck(){
         let id = this.id;
-        console.log(id);
+        //console.log(id);
         this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid='+ id ).then((reponse) =>{
          this.tableData = reponse.data.data;
          this.hoursData = reponse.data.data[0].hours;
-         for(var i=0;i<7;i++){
+         for(var i=0;i<this.tableData.length;i++){
           this.date[i] = this.tableData[i].date
+          //console.log(this.date[i])
+
           this.tem1[i] = parseInt(this.tableData[i].tem)
+          //console.log(this.tem1[i])
         }
-        for (var i=0;i<8;i++){
+        console.log(this.date)
+        console.log(this.tem1)
+        for (var i=0;i<this.hoursData.length;i++){
           this.hours[i] = this.hoursData[i].day;
           this.tem2[i] = parseInt(this.hoursData[i].tem);
         }
-        // console.log(this.tem2);
-        // console.log(this.hours);
+        console.log(this.tem1);
+         console.log(this.date);
           //console.log(this.hoursData);
           this.onGetchart();
           this.onGethourschart();
@@ -136,11 +141,11 @@
       this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid=101020200' ).then((reponse) =>{
        this.tableData = reponse.data.data;
        this.hoursData = reponse.data.data[0].hours;
-       for(var i=0;i<7;i++){
+       for(var i=0;i<this.tableData.length;i++){
         this.date[i] = this.tableData[i].date
         this.tem1[i] = parseInt(this.tableData[i].tem)
       }
-      for (var i=0;i<8;i++){
+      for (var i=0;i<this.hoursData.length;i++){
         this.hours[i] = this.hoursData[i].day;
         this.tem2[i] = parseInt(this.hoursData[i].tem);
       }
