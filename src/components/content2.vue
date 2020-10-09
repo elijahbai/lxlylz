@@ -20,18 +20,15 @@
 			<div class="tableBox">
 				<el-table
 					v-if="curType == 'type' "
-					:data="tableData"
+					:data="tableData01"
 					border
 					style="width: 100%">
 					<el-table-column prop="id" label="id" width="100"></el-table-column>
-					<el-table-column prop="id" label="id" ></el-table-column>
-					<el-table-column prop="id" label="id"></el-table-column>
-					<el-table-column prop="id" label="id"></el-table-column>
-					<el-table-column label="ID">
-						</el-table-column>
-					</el-table-column>
-					<el-table-column  label="id" width="300" align="center">
-					</el-table-column>
+					<el-table-column prop="name" label="姓名" ></el-table-column>
+					<el-table-column prop="age" label="年龄"></el-table-column>
+					<el-table-column prop="city" label="城市"></el-table-column>
+<!-- 					<el-table-column  label="id" width="300" align="center">
+					</el-table-column> -->
 				</el-table>
 				<el-table
 					 v-if="curType == 'hardware' "
@@ -74,6 +71,11 @@ export default{
 	data(){
 		return{
 			curType:'type',
+			tableData01: [
+			{'id':1,'name':"lx",'age':3,'city': "Shanghai"},
+			{'id':2,'name':"ly",'age': 21,'city': "Henan"},
+			{'id':3,'name':"lz",'age':18,'city': "Beijing"}
+			],
 			tableData: [],
 			currentPage:1,
 			count:15,
@@ -123,7 +125,7 @@ export default{
 <style scoped lang="less">
 .main{
 	color: #FFFFFF;
-	background: purple;
+	background: grey;
 	.addBox{
 		padding-right: 20px;
 		text-align: right;
