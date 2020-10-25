@@ -10,6 +10,11 @@ import store from './store/store';
 import VueCookie from 'vue-cookie';
 //import './assets/icon/iconfont.css';
 import Print from 'vue-print-nb';
+// import 'vue-easytable/libs/themes-base/index.css'
+// import {VTable,VPagination} from 'vue-easytable'
+
+
+//Vue.component(VTable.name, VTable);
 Vue.use(Print);
 Vue.use(ElementUI);
 Vue.use(VueCookie);

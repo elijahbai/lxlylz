@@ -1,144 +1,154 @@
 <template>
-	<div class="body">
-		<label class="button">
-			<input type="checkbox">
-			<span></span>
-			<span></span>
-		</label>
-	</div>
+	<v-table :width="1100" :height="600" even-bg-color="#f2f2f2" :title-rows="titleRows" :columns="columns" :table-data="tableData" row-hover-color="#eee" row-click-color="#edf7ff" :cell-edit-done="cellEditDone" is-horizontal-resize></v-table>
 </template>
 
-<script>
-</script>
 
-<style scoped lang="less">
-*,
-*:before,
-*:after {
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+
+
+<style>
+/*.title-cell-class-name-test1 {
+	background-color: #2db7f5;
 }
-.body {
-  background-color: #1c1d1f;
-}
-.button {
-  display: block;
-  margin-top: 200px;
-  margin-left: 400px;
-  width: 400px;
-  height: 120px;
-  position: absolute;
-  //top: 50%;
-  //left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #000000;
-  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2) inset;
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-.button span {
-  display: block;
-  position: absolute;
-  top: 6px;
-  width: 194px;
-  height: 108px;
-  background-color: #1c1d1f;
-  -webkit-transition: -webkit-transform 300ms ease, box-shadow 300ms ease;
-          transition: transform 300ms ease, box-shadow 300ms ease;
-}
-.button span:before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  font-family: "Open Sans";
-  font-weight: 800;
-  font-size: 48px;
-  -webkit-transition: text-shadow 800ms ease 100ms, color 800ms ease 100ms;
-          transition: text-shadow 800ms ease 100ms, color 800ms ease 100ms;
-}
-.button span:after {
-  content: "";
-  width: 4px;
-  height: 108px;
-  position: absolute;
-  top: 0;
-  background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.5) 0%, transparent 50%);
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, transparent 50%);
-  -webkit-transition: opacity 300ms ease;
-          transition: opacity 300ms ease;
-}
-.button span:first-of-type {
-  left: 6px;
-  border-top-left-radius: 18px;
-  border-bottom-left-radius: 18px;
-  -webkit-transform-style: preserve3d;
-          transform-style: preserve3d;
-  -webkit-transform-origin: right center;
-      -ms-transform-origin: right center;
-          transform-origin: right center;
-  -webkit-transform: perspective(2000px) rotateY(40deg);
-          transform: perspective(2000px) rotateY(40deg);
-  box-shadow: -1px 0 1px rgba(255, 255, 255, 0.1) inset, 4px 0 8px rgba(255, 255, 255, 0.1) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -10px 0 8px rgba(40, 42, 44, 0.9), -20px 0 8px rgba(28, 29, 31, 0.7), -30px 0 8px rgba(28, 29, 31, 0.4);
-}
-.button span:first-of-type:before {
-  content: "ON";
-  color: rgba(0, 0, 0, 0.5);
-  text-shadow: 1px 4px 6px #1c1d1f, 0 0 0 #000000, 1px 4px 6px #1c1d1f;
-}
-.button span:first-of-type:after {
-  left: -1px;
-}
-.button span:last-of-type {
-  right: 6px;
-  border-top-right-radius: 18px;
-  border-bottom-right-radius: 18px;
-  -webkit-transform-origin: left center;
-      -ms-transform-origin: left center;
-          transform-origin: left center;
-  box-shadow: -1px 1px 1px rgba(255, 255, 255, 0.1) inset, 2px 0 2px rgba(255, 255, 255, 0.05) inset;
-}
-.button span:last-of-type:before {
-  content: "OFF";
-  color: #ff4847;
-  text-shadow: 0 0 24px rgba(255, 72, 71, 0.6);
-}
-.button span:last-of-type:after {
-  right: -1px;
-  opacity: 0;
-}
-.button input[type="checkbox"] {
-  display: none;
-}
-.button input[type="checkbox"]:checked ~ span:first-of-type {
-  -webkit-transform: none;
-      -ms-transform: none;
-          transform: none;
-  box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1) inset, -2px 0 2px rgba(255, 255, 255, 0.05) inset;
-}
-.button input[type="checkbox"]:checked ~ span:first-of-type:before {
-  color: #93c913;
-  text-shadow: 0 0 24px rgba(147, 201, 19, 0.6);
-}
-.button input[type="checkbox"]:checked ~ span:first-of-type:after {
-  opacity: 0;
-}
-.button input[type="checkbox"]:checked ~ span:last-of-type {
-  -webkit-transform: perspective(2000px) rotateY(-40deg);
-          transform: perspective(2000px) rotateY(-40deg);
-  box-shadow: 1px 0 1px rgba(255, 255, 255, 0.1) inset, -4px 0 8px rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset, 10px 0 8px rgba(40, 42, 44, 0.9), 20px 0 8px rgba(28, 29, 31, 0.7), 30px 0 8px rgba(28, 29, 31, 0.4);
-}
-.button input[type="checkbox"]:checked ~ span:last-of-type:before {
-  color: rgba(0, 0, 0, 0.5);
-  text-shadow: 1px 4px 6px #1c1d1f, 0 0 0 #000000, 1px 4px 6px #1c1d1f;
-}
-.button input[type="checkbox"]:checked ~ span:last-of-type:after {
-  opacity: 1;
-}
+.title-cell-class-name-test2 {
+	background-color: #2db7f5;
+	}*/
+	.header-first{
+		background-color: rgb(142,142,147);
+	}
+	.time{
+		background-color: rgb(67,181,129);
+	}
+	.data{
+		background-color: rgb(79,99,217);
+	}
+	.name{
+		background-color: rgb(248,230,230);
+	}
+	.header-sec01{
+		background-color: rgb(67, 181, 129);
+	}
+	.header-sec02{
+		background-color: rgb(255,64,64);
+	}
+	.header-sec03{
+		background-color: rgb(204,237,24);
+	}
+	.jinkou{
+		background-color: rgb(217,225,235);
+	}
+	.chukou{
+		background-color: rgb(227,233,239);
+	}
+	.cell-edit-color{
+		color:#2db7f5;
+		font-weight: bold;
+	}
 </style>
+<script>
+
+	export default{
+		data(){
+			return {
+				multipleSort: false,
+				tableData: [
+				{"name":"赵伟","gender":"男","height":"183","email":"zhao@gmail.com","tel":"156*****1987","hobby":"钢琴、书法、唱歌","address":"上海市黄浦区金陵东路569号17楼"},
+				{"name":"李伟","gender":"男","height":"166","email":"li@gmail.com","tel":"182*****1538","hobby":"钢琴、书法、唱歌","address":"上海市奉贤区南桥镇立新路12号2楼"},
+				{"name":"孙伟","gender":"女","height":"186","email":"sun@gmail.com","tel":"161*****0097","hobby":"钢琴、书法、唱歌","address":"上海市崇明县城桥镇八一路739号"},
+				{"name":"周伟","gender":"女","height":"188","email":"zhou@gmail.com","tel":"197*****1123","hobby":"钢琴、书法、唱歌","address":"上海市青浦区青浦镇章浜路24号"},
+				{"name":"吴伟","gender":"男","height":"160","email":"wu@gmail.com","tel":"183*****6678","hobby":"钢琴、书法、唱歌","address":"上海市松江区乐都西路867-871号"},
+				{"name":"冯伟","gender":"女","height":"168","email":"feng@gmail.com","tel":"133*****3793","hobby":"钢琴、书法、唱歌","address":"上海市金山区龙胜路143号一层"},
+
+				],
+				columns: [
+				{
+					field: 'custome', width: 50, titleAlign: 'center', columnAlign: 'center',
+					formatter: function (rowData, index) {
+						return index < 3 ? '<span style="color:none;font-weight: bold;">' + (index + 1) + '</span>' : index + 1
+					},
+					isFrozen: true
+				},
+				{field: 'name', width: 150, columnAlign: 'center', isFrozen: true},
+				{field: 'gender', width: 150, columnAlign: 'center', isFrozen: true},
+				{field: 'height', width: 150, columnAlign: 'center', isFrozen: true},
+				{field: 'tel', width: 150, columnAlign: 'center', isFrozen: true},
+				{field: 'email', width: 150, columnAlign: 'center', isFrozen: true},
+				{field: 'hobby', width: 150, columnAlign: 'center', isFrozen: true},
+				{field: 'address', width: 150, columnAlign: 'left', isFrozen: true}
+				],
+
+				titleRows:[
+				[{fields:['custome','name','gender','height','tel', 'email','hobby','address'],title:'锅炉记录表',titleAlign:'center',colspan:8,titleCellClassName:'header-first', isEdit:true}],
+
+				[{fields: ['custome'], title: '项目', titleAlign: 'center', rowspan: 1,isEdit:true,formatter: function (rowData,rowIndex,pagingIndex,field){
+
+                                   return `<span class='cell-edit-color'>${rowData[field]}</span>`;
+                               },isResize:true},
+				{fields: ['name', 'gender' ], title: '一级反渗透', titleAlign: 'center', colspan: 2,titleCellClassName:'header-sec01', isEdit:true, isResize:true},
+				{fields: ['height','tel', 'email'], title: '二级反渗透', titleAlign: 'center', colspan: 3,titleCellClassName:'header-sec02',isEdit:true,isResize:true},
+				{fields: ['hobby','address'], title: '锅炉外壁', titleAlign: 'center', rowspan: 1,colspan: 2,titleCellClassName:'header-sec03',isEdit:true,isResize:true}],
+
+				[{fields:['custome'],title:'名称',titleAlign:'center',rowspan:3,colspan:1,titleCellClassName:'name'},
+				{fields:['name','gender'],title:'',colspan:2},
+				{fields:['height','tel'],title:'进口',titleAlign:'center',colspan:2,titleCellClassName:'jinkou'},
+				{fields:['email'],title:'出口',titleAlign:'center',colspan:1,titleCellClassName:'chukou'},
+				{fields:['hobby','address'],title:'',colspan:2},
+				],
+
+				[{fields:['name'],title:'滑油压力',titleAlign: 'center', colspan: 1},
+				{fields: ['gender'], title: '燃油压力', titleAlign: 'center', colspan: 1},
+				{fields: ['height'], title: '进口温度', titleAlign: 'center', colspan: 1},
+				{fields: ['tel'], title: '进口高温', titleAlign: 'center', colspan: 1},
+				{fields: ['email'], title: '出口压力', titleAlign: 'center', colspan: 1},
+				{fields: ['hobby',], title: '外壁温度1', titleAlign: 'center', colspan: 1},
+				{fields: ['address'], title: '外壁温度2', titleAlign: 'center', colspan: 1},],
+
+				[{fields:['name'],title:'PRESS.LO',titleAlign: 'center', colspan: 1},
+				{fields: ['gender'], title: 'PRESS.RL', titleAlign: 'center', colspan: 1},
+				{fields: ['height'], title: 'T.INLET', titleAlign: 'center', colspan: 1},
+				{fields: ['tel'], title: 'TH.INLET', titleAlign: 'center', colspan: 1},
+				{fields: ['email'], title: 'PRESS.OUTLET', titleAlign: 'center', colspan: 1},
+				{fields: ['hobby',], title: 'T.WALL.01', titleAlign: 'center', colspan: 1},
+				{fields: ['address'], title: 'T.WALL.02', titleAlign: 'center', colspan: 1},],
+
+				[{fields:['custome'],title:'位号',titleAlign: 'center', rowspan:1,colspan: 1},
+				{fields:['name'],title:'P101',titleAlign: 'center', colspan: 1},
+				{fields: ['gender'], title: 'P102', titleAlign: 'center', colspan: 1},
+				{fields: ['height'], title: 'T123', titleAlign: 'center', colspan: 1},
+				{fields: ['tel'], title: 'T81', titleAlign: 'center', colspan: 1},
+				{fields: ['email'], title: 'P12', titleAlign: 'center', colspan: 1},
+				{fields: ['hobby',], title: 'T12', titleAlign: 'center', colspan: 1},
+				{fields: ['address'], title: 'T13', titleAlign: 'center', colspan: 1},],
+
+				[{fields:['custome'],title:'单位',titleAlign: 'center', rowspan:1,colspan: 1},
+				{fields:['name'],title:'MPa',titleAlign: 'center', colspan: 1},
+				{fields: ['gender'], title: 'Bar', titleAlign: 'center', colspan: 1},
+				{fields: ['height'], title: '℃', titleAlign: 'center', colspan: 1},
+				{fields: ['tel'], title: '℃', titleAlign: 'center', colspan: 1},
+				{fields: ['email'], title: 'KPa', titleAlign: 'center', colspan: 1},
+				{fields: ['hobby',], title: '℃', titleAlign: 'center', colspan: 1},
+				{fields: ['address'], title: '℃', titleAlign: 'center', colspan: 1},],
+
+				[{fields:['custome'],title:'时间',titleAlign: 'center', rowspan:1,colspan: 1,titleCellClassName:'time'},
+				{fields:['name'],title:'数据',titleAlign: 'center', colspan: 1,titleCellClassName:'data'},
+				{fields: ['gender'], title: '数据', titleAlign: 'center', colspan: 1,titleCellClassName:'data'},
+				{fields: ['height'], title: '数据', titleAlign: 'center', colspan: 1,titleCellClassName:'data'},
+				{fields: ['tel'], title: '数据', titleAlign: 'center', colspan: 1,titleCellClassName:'data'},
+				{fields: ['email'], title: '数据', titleAlign: 'center', colspan: 1,titleCellClassName:'data'},
+				{fields: ['hobby',], title: '数据', titleAlign: 'center', colspan: 1,titleCellClassName:'data'},
+				{fields: ['address'], title: '数据', titleAlign: 'center', colspan: 1,titleCellClassName:'data'},],
+				],
+			}
+		},
+		methods:{
+
+            // 单元格编辑回调
+            cellEditDone(newValue,oldValue,rowIndex,rowData,field){
+
+            	this.tableData[rowIndex][field] = newValue;
+
+                // 接下来处理你的业务逻辑，数据持久化等...
+            },
+ 
+        },
+    }
+</script>
