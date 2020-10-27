@@ -17,7 +17,7 @@
       style="width: 100%;margin-top:10px"
       @header-contextmenu="colRightClick"
       @cell-dblclick="celldbclick"
-      :span-method="arraySpanMethod">
+      :span-method="arraySpanMethodtest">
       <el-table-column v-if="testCols.length > 0" type="index" :label="'编号'" :width="50" ></el-table-column>
 
       <el-table-column v-for="(column, idx) in testCols" :key="idx" :index="idx">
@@ -117,7 +117,7 @@ export default {
     arraySpanMethodtest({ row, column, rowIndex, columnIndex }){
       //console.log(row, column, rowIndex, columnIndex)
       // 打印出的数据就是表格当前行的数据,当前列的数据,索引
-      console.log('success');
+      console.log('passed here');
       if (rowIndex === 0) {
         // 合并第二行
         if (columnIndex === 4) {
@@ -138,7 +138,7 @@ export default {
     },
     celldbclick(row, column, cell, event){
       this.color = '#2e24c3';
-      console.log(row, column, cell, event);
+      //console.log(row, column, cell, event);
 
     },
 		colRightClick(column,event) {
