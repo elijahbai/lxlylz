@@ -12,13 +12,14 @@
 						Shanghai
 					</li>
 				</ul>
+        <el-button style="margin-left: 145px;margin-bottom: -12px;" @click="changeLanguage()">{{$t('language.name')}}</el-button>
 				<ul style="margin-top: 41px;" class="flex titBox">
 					<li style="border-right:  1px solid #e8e8e8;" class="flex flex-column flex_center">
-						<p>当前时间</p>
+						<p>{{$t('home.time')}}</p>
 						<p class="value">{{this.dataTime}}</p>
 					</li>
 					<li class="flex flex-column flex_center">
-						<p>上海天气</p>
+						<p>{{$t('home.weather')}}</p>
 						<p class="value">晴朗多云</p>
 					</li>
 				</ul>
@@ -120,6 +121,10 @@
 		},
 
 		methods:{
+      changeLanguage(){
+          this.$i18n.locale=='zh'?this.$i18n.locale='en':this.$i18n.locale='zh'   //设置中英文模式
+          localStorage.setItem('languageSet',this.$i18n.locale)   //将用户设置存储到localStorage以便用户下次打开时使用此设置
+      },
 			onCheckIsLogin(){
 				if(!this.$store.state.admin){
 					this.$router.push('/');

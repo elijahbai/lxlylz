@@ -9,7 +9,7 @@
             :value="item.id">
           </el-option>
           </el-select>
-        <el-button class="searchbox" type="primary" size="small" icon="el-icon-search" @click="onCheck()" >查询
+        <el-button class="searchbox" type="primary" size="small" icon="el-icon-search" @click="onCheck()" >{{$t('home.search')}}
         </el-button>
     </div>
    <div class="flex leftbox">

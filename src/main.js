@@ -12,7 +12,15 @@ import VueCookie from 'vue-cookie';
 import Print from 'vue-print-nb';
 // import 'vue-easytable/libs/themes-base/index.css'
 // import {VTable,VPagination} from 'vue-easytable'
-
+import VueI18n from 'vue-i18n'
+Vue.use(VueI18n)
+const i18n=new VueI18n({
+    locale:localStorage.getItem('languageSet')||'zh',   //从localStorage里获取用户中英文选择，没有则默认中文
+    messages:{
+        'zh':require('./components/language/zh'),
+        'en':require('./components/language/en')
+    }
+})
 
 //Vue.component(VTable.name, VTable);
 Vue.use(Print);
@@ -32,6 +40,7 @@ Vue.prototype.$api = api;
 new Vue({
   el: '#app',
   router,
+  i18n,
   store,
   components: { App },
   template: '<App/>'
