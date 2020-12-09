@@ -1,34 +1,34 @@
 <template>
   <div class="flex-between main">
     <div>
-          <el-select  style="margin-left: 10px;margin-top: 10px; " v-model="id"  placeholder="请选择城市名称">
-          <el-option
-            v-for="item in options"
-            :key="item.id"
-            :label="item.name"
-            :value="item.id">
-          </el-option>
-          </el-select>
-        <el-button class="searchbox" type="primary" size="small" icon="el-icon-search" @click="onCheck()" >{{$t('home.search')}}
-        </el-button>
+      <el-select  style="margin-left: 10px;margin-top: 10px; " v-model="id"  placeholder="请选择城市名称">
+        <el-option
+          v-for="item in options"
+          :key="item.id"
+          :label="item.name"
+          :value="item.id">
+        </el-option>
+      </el-select>
+      <el-button class="searchbox" type="primary" size="small" icon="el-icon-search" @click="onCheck()" >{{$t('home.search')}}
+      </el-button>
     </div>
    <div class="flex leftbox">
     <div class="daytable">
-     <el-table
-     :data="tableData"
-     border
-     style="width: 96.5%"
-     class="weather">
-     <el-table-column prop="date" label="data"></el-table-column>
-     <el-table-column prop="week" label="data"></el-table-column>
-     <el-table-column prop="wea" label="天气状况"></el-table-column>
-     <el-table-column prop="tem" label="温度"></el-table-column>
-     <el-table-column prop="win" label="风向"></el-table-column>
-     <el-table-column prop="win_speed" label="风级"></el-table-column>
-     <el-table-column prop="air_level" label="空气质量"></el-table-column>
-     <el-table-column prop="air_tips" label="air_tips" ></el-table-column>
-   </el-table>
- </div>
+      <el-table
+        :data="tableData"
+        border
+        style="width: 96.5%"
+        class="weather">
+        <el-table-column prop="date" label="data"></el-table-column>
+        <el-table-column prop="week" label="data"></el-table-column>
+        <el-table-column prop="wea" label="天气状况"></el-table-column>
+        <el-table-column prop="tem" label="温度"></el-table-column>
+        <el-table-column prop="win" label="风向"></el-table-column>
+        <el-table-column prop="win_speed" label="风级"></el-table-column>
+        <el-table-column prop="air_level" label="空气质量"></el-table-column>
+        <el-table-column prop="air_tips" label="air_tips" ></el-table-column>
+      </el-table>
+    </div>
  <div class="chart" id="hourschart"></div>
   </div>
 <div class="flex rightbox">
