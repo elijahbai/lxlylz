@@ -4,6 +4,7 @@
       <el-input placeholder="请输入查询内容" v-model="keyword" clearable style="width: 200px;margin-right: 10px;"></el-input>
       <el-button @click="onGetData()" icon="el-icon-search">搜索</el-button>
       <el-button @click="onadd()" icon="el-icon-plus">新增</el-button>
+     <!-- <el-button @click="onTotal()" >统计</el-button> -->
     </div>
     <div class="tablxbox">
       <el-table
@@ -22,7 +23,6 @@
           </template>
         </el-table-column>
       </el-table>
-
       <div class="page">
       	<el-pagination
       		@current-change="handleCurrentChange"
@@ -103,6 +103,11 @@
       //this.onGetchart();
     },
     methods:{
+      onTotal(){
+				//this.$store.commit('getSecondChildren',data['role_name']);
+				this.$router.push({path:'/main/total01',});
+				sessionStorage.setItem('state', JSON.stringify(this.$store.state));
+      },
       handleCurrentChange(val) {
       	this.currentPage = val;
       	this.onGetData();

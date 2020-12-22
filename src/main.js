@@ -8,10 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VeeValidate from 'vee-validate';
 import store from './store/store';
 import VueCookie from 'vue-cookie';
-//import './assets/icon/iconfont.css';
 import Print from 'vue-print-nb';
-// import 'vue-easytable/libs/themes-base/index.css'
-// import {VTable,VPagination} from 'vue-easytable'
+import echarts from 'echarts'
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 const i18n=new VueI18n({
@@ -33,7 +31,7 @@ Vue.use(VeeValidate,{
 	fieldsBagName: 'veefields'
 });
 Vue.prototype.$axios = axios
-
+//Vue.prototype.$echarts = echarts
 import api from '@/request/api.js' // 导入api接口
 Vue.prototype.$api = api;
 /* eslint-disable no-new */

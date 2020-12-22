@@ -1,5 +1,3 @@
 export let ipConfig = {
-
-
-	//url	: 'http://192.168.3.15:8000',
+	urlLY	: 'http://127.0.0.1:8000',
 }

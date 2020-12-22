@@ -149,8 +149,6 @@
         this.hours[i] = this.hoursData[i].day;
         this.tem2[i] = parseInt(this.hoursData[i].tem);
       }
-      console.log(this.tem2);
-      console.log(this.hours);
         //console.log(this.hoursData);
         this.onGetchart();
         this.onGethourschart();
