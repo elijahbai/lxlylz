@@ -54,6 +54,7 @@
 
 <script >
   import Highchart from 'highcharts'
+  import Vue from 'vue'
   import Qs from 'qs';
   export default{
     name: 'index',
@@ -111,50 +112,118 @@
     methods:{
       onCheck(){
         let id = this.id;
-        //console.log(id);
-        this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid='+ id ).then((reponse) =>{
-         this.tableData = reponse.data.data;
-         this.hoursData = reponse.data.data[0].hours;
-         for(var i=0;i<this.tableData.length;i++){
-          this.date[i] = this.tableData[i].date
-          //console.log(this.date[i])
+        let parmas = {
+          appid: '91536352',
+          appsecret: 'Py9Zs0RD',
+          version: 'v1',
+          cityid: id,
+        }
+        this.$http.get('https://www.tianqiapi.com/api/?appid=91536352&appsecret=Py9Zs0RD&version=v1&cityid='+ id).then((response) => {
+            // 响应成功回调
+            console.log(response)
+        }, (response) => {
+            // 响应错误回调
+        });
+        // this.$api.weather(parmas).then(res =>{
+        //   console.log('passed here')
+        //   console.log(res.data.data)
+        // }).catch(() => {console.log("something wrong")})
+        // this.axios({
+        // 	method: 'get',
+        // 	url:	'https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid='+ id,
+        // 	data: '',
+        // }).then((res)=>{
+        //   console.log("passed here")
+        //   console.log(res)
+        //   this.tableData = res.data.data;
+        //    this.hoursData = res.data.data[0].hours;
+        //    for(var i=0;i<this.tableData.length;i++){
+        //     this.date[i] = this.tableData[i].date
+        //     //console.log(this.date[i])
 
-          this.tem1[i] = parseInt(this.tableData[i].tem)
-          //console.log(this.tem1[i])
-        }
-        console.log(this.date)
-        console.log(this.tem1)
-        for (var i=0;i<this.hoursData.length;i++){
-          this.hours[i] = this.hoursData[i].day;
-          this.tem2[i] = parseInt(this.hoursData[i].tem);
-        }
-        console.log(this.tem1);
-         console.log(this.date);
-          //console.log(this.hoursData);
-          this.onGetchart();
-          this.onGethourschart();
-        },function(reponse){
-         //console.log("test");
-       }).catch(() => {})
+        //     this.tem1[i] = parseInt(this.tableData[i].tem)
+        //     //console.log(this.tem1[i])
+        //   }
+        //   for (var i=0;i<this.hoursData.length;i++){
+        //     this.hours[i] = this.hoursData[i].day;
+        //     this.tem2[i] = parseInt(this.hoursData[i].tem);
+        //   }
+        //     //console.log(this.hoursData);
+        //     this.onGetchart();
+        //     this.onGethourschart();
+        // 	if(res.data.code == 200){
+        //     console.log("passed here")
+        // 	}else{
+        // 		this.$message({
+        // 			type: 'warning',
+        // 			message: res.data.msg
+        // 		});
+        // 	}
+        // }).catch((error)=>{})
+
+       //  this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid='+ id ).then((reponse) =>{
+
+       //   this.tableData = reponse.data.data;
+       //   console.log(reponse.data.data)
+       //   this.hoursData = reponse.data.data[0].hours;
+       //   for(var i=0;i<this.tableData.length;i++){
+       //    this.date[i] = this.tableData[i].date
+       //    //console.log(this.date[i])
+
+       //    this.tem1[i] = parseInt(this.tableData[i].tem)
+       //    //console.log(this.tem1[i])
+       //  }
+       //  console.log(this.date)
+       //  console.log(this.tem1)
+       //  for (var i=0;i<this.hoursData.length;i++){
+       //    this.hours[i] = this.hoursData[i].day;
+       //    this.tem2[i] = parseInt(this.hoursData[i].tem);
+       //  }
+       //  console.log(this.tem1);
+       //   console.log(this.date);
+       //    //console.log(this.hoursData);
+       //    this.onGetchart();
+       //    this.onGethourschart();
+       //  },function(reponse){
+       //   //console.log("test");
+       // }).catch(() => {})
       },
      getWeather() {
-      this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid=101020200' ).then((reponse) =>{
-       this.tableData = reponse.data.data;
-       this.hoursData = reponse.data.data[0].hours;
-       for(var i=0;i<this.tableData.length;i++){
-        this.date[i] = this.tableData[i].date
-        this.tem1[i] = parseInt(this.tableData[i].tem)
-      }
-      for (var i=0;i<this.hoursData.length;i++){
-        this.hours[i] = this.hoursData[i].day;
-        this.tem2[i] = parseInt(this.hoursData[i].tem);
-      }
-        //console.log(this.hoursData);
-        this.onGetchart();
-        this.onGethourschart();
-      },function(reponse){
-       console.log("test");
-     }).catch(() => {})
+			 this.$axios.get('https://devapi.qweather.com/v7/weather/7d?key=a04d5e4537274fbd8d3a8634dedaacae&location=101020200' ).then((reponse) =>{
+			   console.log(reponse)
+				 this.tableData = reponse.data.data;
+			   this.hoursData = reponse.data.data[0].hours;
+			   for(var i=0;i<this.tableData.length;i++){
+			    this.date[i] = this.tableData[i].date
+			    this.tem1[i] = parseInt(this.tableData[i].tem)
+			  }
+			  for (var i=0;i<this.hoursData.length;i++){
+			    this.hours[i] = this.hoursData[i].day;
+			    this.tem2[i] = parseInt(this.hoursData[i].tem);
+			  }
+			    //console.log(this.hoursData);
+			    this.onGetchart();
+			    this.onGethourschart();
+			  },function(reponse){
+			   console.log("test");
+			 }).catch(() => {})
+     //  this.$axios.get('https://www.tianqiapi.com/api/?appid=91536352 &appsecret=Py9Zs0RD&version=v1&cityid=101020200' ).then((reponse) =>{
+     //   this.tableData = reponse.data.data;
+     //   this.hoursData = reponse.data.data[0].hours;
+     //   for(var i=0;i<this.tableData.length;i++){
+     //    this.date[i] = this.tableData[i].date
+     //    this.tem1[i] = parseInt(this.tableData[i].tem)
+     //  }
+     //  for (var i=0;i<this.hoursData.length;i++){
+     //    this.hours[i] = this.hoursData[i].day;
+     //    this.tem2[i] = parseInt(this.hoursData[i].tem);
+     //  }
+     //    //console.log(this.hoursData);
+     //    this.onGetchart();
+     //    this.onGethourschart();
+     //  },function(reponse){
+     //   console.log("test");
+     // }).catch(() => {})
     },
     onGetchart(){
       //console.log(this.tem1);

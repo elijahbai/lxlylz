@@ -20,6 +20,9 @@ const i18n=new VueI18n({
     }
 })
 
+// import VueResource from 'vue-resource'
+// Vue.use(VueResource)
+
 //Vue.component(VTable.name, VTable);
 Vue.use(Print);
 Vue.use(ElementUI);

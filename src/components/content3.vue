@@ -1,5 +1,8 @@
 <template>
   <div class="main">
+		<div>
+			<Son v-bind:mySon="message"/>
+		</div>
     <div class="flex head">
       <el-input placeholder="请输入查询内容" v-model="keyword" clearable style="width: 200px;margin-right: 10px;"></el-input>
       <el-button @click="onGetData()" icon="el-icon-search">搜索</el-button>
@@ -73,6 +76,7 @@
     },
     data(){
       return{
+				message: '父组件传递',
         keyword: '',
         id: '',
         tittle: '',

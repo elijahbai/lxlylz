@@ -1,7 +1,8 @@
 <template>
   <div id="hello">
+    <div>{{mySon}}</div>
 		<h4 style="display: inline-block;margin:0;">测试表</h4>
-
+    <el-button @click="second">跳转</el-button>
 		<div style="display: inline-block;float: right;">
       <el-button size="mini" type="primary" @click="arraySpanMethodtest">合并测试</el-button>
 			<el-button size="mini" type="primary" v-print="'#addBox'">打印数据</el-button>
@@ -50,6 +51,7 @@
 
     </el-table>
 
+
 		<div v-show="showMenu" id="contextmenu">
 			<i class="el-icon-circle-close hideContextMenu" @click="showMenu=false"></i>
 			<el-button size="mini" type="primary" @click="addColumn(curColumn)">前方插入一列</el-button>
@@ -59,12 +61,20 @@
 			</el-popconfirm>
 		</div>
 
+    <div class="triangle"></div>
+    <div class="line"></div>
+    <svg version="1.1" >
+      <circle cx="100" cy="50" r="40" stroke="black"
+      stroke-width="2" fill="red" draggable="true" />
+    </svg>
+
   </div>
 </template>
 
 <script>
 export default {
  name: 'demo',
+ props:["mySon"],
   data(){
 	 return{
       color:"",
@@ -92,6 +102,12 @@ export default {
 	 }
   },
 	methods:{
+    second(){
+      let routeUrl = this.$router.resolve({
+        path: "/total01",
+      });
+      window.open(routeUrl .href, '_blank');
+    },
     //合并行或列的计算方法
     arraySpanMethod({ row, column, rowIndex, columnIndex }){
       //console.log(row, column, rowIndex, columnIndex)
@@ -117,7 +133,6 @@ export default {
     arraySpanMethodtest({ row, column, rowIndex, columnIndex }){
       //console.log(row, column, rowIndex, columnIndex)
       // 打印出的数据就是表格当前行的数据,当前列的数据,索引
-      console.log('passed here');
       if (rowIndex === 0) {
         // 合并第二行
         if (columnIndex === 4) {
@@ -212,4 +227,19 @@ export default {
 }
 #contextmenu button {display: block;margin: 0 0 5px;}
 .hideContextMenu {position: absolute;top: 5px;right: 5px;}
+
+.triangle{
+  width: 0;
+  height: 0;
+  margin: 100px auto;
+  border-top: 50px solid transparent;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 50px solid red;
+}
+.line{
+  width: 100px;
+  height: 1px;
+  background: red;
+}
 </style>

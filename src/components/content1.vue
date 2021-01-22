@@ -2,20 +2,31 @@
 	<div class="hello">
 		<div class="mainbox">
 			<ul class="flex flex_warp flex_center">
+				<li class="infoBox" >
+          <video
+            src="../../static/testvideo.mp4"
+            style="width: 646px;height: 400px;"
+            autoplay="autoplay"
+            controls="controls">
+          </video>
+				</li>
 				<li class="infoBox">
-					<div class="body">
-						<label class="button">
-							<input type="checkbox">
-							<span></span>
-							<span></span>
-						</label>
-					</div>
+          <audio 
+            src="../../static/testaudio.mp3"
+            controls="controls"
+            autoplay="autoplay">
+          </audio>
 				</li>
 				<li class="infoBox">
 				</li>
 				<li class="infoBox">
-				</li>
-				<li class="infoBox">
+          <div class="body">
+          	<label class="button">
+          		<input type="checkbox">
+          		<span></span>
+          		<span></span>
+          	</label>
+          </div>
 				</li>
 			</ul>
 		</div>
@@ -27,7 +38,7 @@ export default {
 	name:'content1',
 	data() {
 		return {
-		}	
+		}
 	},
 	mounted(){
 	},

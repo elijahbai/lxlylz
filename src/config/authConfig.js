@@ -25,4 +25,5 @@ export let authconfig = {
 		iconFont:'iconfont icon-yonghu1',
 		url:'/main/content4',
 	},
+	
 }
